@@ -8,8 +8,7 @@ import requests
 import msgpack
 import os
 
-import report_pb2
-import report_pb2_grpc
+from report_service.proto import report_pb2, report_pb2_grpc
 
 TRANSACTION_HTTP_URL = os.environ.get("TRANSACTION_HTTP_URL", "http://localhost:50053")
 

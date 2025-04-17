@@ -7,8 +7,7 @@ import threading
 from flask import Flask, request, Response
 import msgpack
 
-import transaction_pb2
-import transaction_pb2_grpc
+from transaction_service.proto import transaction_pb2, transaction_pb2_grpc
 
 class TransactionService:
     def __init__(self):

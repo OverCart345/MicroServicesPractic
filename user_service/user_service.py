@@ -7,8 +7,7 @@ import bcrypt
 import jwt
 import os
 
-import user_pb2
-import user_pb2_grpc
+from user_service.proto import user_pb2, user_pb2_grpc
 
 SECRET_KEY = os.environ.get("SECRET_KEY", "secret")
 
