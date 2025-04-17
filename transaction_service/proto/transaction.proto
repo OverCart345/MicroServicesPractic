@@ -1,6 +1,11 @@
 syntax = "proto3";
 package transaction;
 
+enum TransactionType {
+  INCOME = 0;
+  EXPENSE = 1;
+}
+
 service TransactionService {
   // Добавление новой транзакции
   rpc AddTransaction(AddTransactionRequest) returns (AddTransactionResponse);
@@ -12,8 +17,7 @@ message AddTransactionRequest {
   string user_id = 1;
   double amount = 2;
   string currency = 3;
-  enum Type { INCOME = 0; EXPENSE = 1; }
-  Type type = 4;
+  TransactionType type = 4;
   string category = 5;
   string description = 6;
   int64 timestamp = 7;
@@ -36,7 +40,7 @@ message Transaction {
   string user_id = 2;
   double amount = 3;
   string currency = 4;
-  Type type = 5;
+  TransactionType type = 5;
   string category = 6;
   string description = 7;
   int64 timestamp = 8;
