@@ -3,3 +3,7 @@
 
 # Ignore SQLite database files
 *.db
+
+*.journal
+
+*.pyc

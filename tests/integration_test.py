@@ -4,15 +4,13 @@ import grpc
 import msgpack
 import requests
 
-# Add service modules to path
+# Add project root to path for package imports
 dir_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-sys.path.append(os.path.join(dir_root, 'user_service'))
-sys.path.append(os.path.join(dir_root, 'transaction_service'))
-sys.path.append(os.path.join(dir_root, 'report_service'))
+sys.path.insert(0, dir_root)
 
-import user_pb2, user_pb2_grpc
-import transaction_pb2, transaction_pb2_grpc
-import report_pb2, report_pb2_grpc
+from user_service.proto import user_pb2, user_pb2_grpc
+from transaction_service.proto import transaction_pb2, transaction_pb2_grpc
+from report_service.proto import report_pb2, report_pb2_grpc
 
 # Endpoints
 USER_GRPC = 'localhost:50051'
