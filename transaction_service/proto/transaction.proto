@@ -1,0 +1,43 @@
+syntax = "proto3";
+package transaction;
+
+service TransactionService {
+  // Добавление новой транзакции
+  rpc AddTransaction(AddTransactionRequest) returns (AddTransactionResponse);
+  // Получение списка транзакций
+  rpc ListTransactions(ListRequest) returns (ListResponse);
+}
+
+message AddTransactionRequest {
+  string user_id = 1;
+  double amount = 2;
+  string currency = 3;
+  enum Type { INCOME = 0; EXPENSE = 1; }
+  Type type = 4;
+  string category = 5;
+  string description = 6;
+  int64 timestamp = 7;
+}
+message AddTransactionResponse {
+  string transaction_id = 1;
+}
+
+message ListRequest {
+  string user_id = 1;
+  int64 from_ts = 2;
+  int64 to_ts = 3;
+}
+message ListResponse {
+  repeated Transaction items = 1;
+}
+
+message Transaction {
+  string transaction_id = 1;
+  string user_id = 2;
+  double amount = 3;
+  string currency = 4;
+  Type type = 5;
+  string category = 6;
+  string description = 7;
+  int64 timestamp = 8;
+}
